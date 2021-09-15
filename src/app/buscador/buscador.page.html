@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Buscador</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-grid>
+  <ion-row>
+    <ion-col size="4"  offset="4">
+      <ion-card>
+        <img src="../../assets/buscadorImg/rick-and-morty-6344804_640.jpg">
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="8" offset="2">
+      <ion-searchbar placeholder="search..." animated debounce="2000" (ionChange)="search($event)"></ion-searchbar>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid *ngIf="text && text.trim() !='' ">
+  <ion-row>
+    <ion-col *ngFor="let user of users" size="12" size-md="4">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-label>Name: {{ user.name }}</ion-label>
+          </ion-card-title>
+        </ion-card-header>
+        <img src="{{ user.image }}">
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label>Status: {{ user.status }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Species: {{ user.species }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid *ngIf="mostrar">
+  <ion-row>
+    <ion-col *ngFor="let data of datas" size="12" size-md="4">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-label>Name: {{ data.name }} </ion-label>
+          </ion-card-title>
+        </ion-card-header>
+        <img src="{{ data.image }}">
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label>Status: {{ data.status }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Species: {{ data.species }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
